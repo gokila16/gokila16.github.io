@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Audio Transformer Compression · Gokila Harini Karthikeyan</title>
+<meta name="description" content="Structured pruning and knowledge distillation made an 86M-parameter audio transformer 26% smaller and 15.6% faster on a T4, with no measurable accuracy loss.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Making an audio transformer smaller and faster, without losing accuracy">
+<meta property="og:description" content="26% smaller, 87→74 ms on a T4, no measurable accuracy loss.">
+<meta property="og:image" content="https://gokila16.github.io/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#fdeef4">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<script>try{if(localStorage.getItem('side')==='dark')document.documentElement.dataset.theme='dark'}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karla:wght@400;600;700&family=Pixelify+Sans:wght@400;700&display=swap">
+<link rel="stylesheet" href="styles.css">
+<script src="main.js" defer></script>
+</head>
+<body>
+<main class="proj">
+
+<nav class="crumbs" aria-label="Breadcrumb">
+<div><a href="index.html">home</a> › <a href="index.html#projects">projects</a> › audio transformer compression</div>
+<a href="index.html">← back to home base</a>
+</nav>
+
+<div class="proj-head">
+<div class="proj-icon"><svg viewBox="0 0 12 12" shape-rendering="crispEdges" aria-hidden="true"><path style="fill: var(--pink)" d="M1 5h1v2H1z M3 3h1v6H3z M5 1h1v10H5z M7 4h1v4H7z M9 2h1v8H9z M11 5h1v2h-1z"/></svg></div>
+<div>
+<div class="tags"><span class="tag">FIRST-AUTHOR PAPER</span><span class="tag">MAR – JUL 2026</span><span class="tag tag-blue">UNDER REVIEW · ICASSP 2027</span></div>
+<h1>Making an audio transformer smaller and faster, without losing accuracy</h1>
+</div>
+</div>
+
+<p class="proj-lede">I took an 86M-parameter audio classification transformer and cut it down with structured pruning and knowledge distillation. It ended up 26% smaller and 15.6% faster on a T4 GPU, with no measurable drop in accuracy.</p>
+
+<table class="facts"><tbody>
+<tr><th scope="row">ROLE</th><td>First author: design, experiments, and writing</td></tr>
+<tr><th scope="row">STACK</th><td>PyTorch, Hugging Face Transformers</td></tr>
+<tr><th scope="row">DATA</th><td>30,388 clips, 40 classes, built from 4 public audio sources</td></tr>
+<tr><th scope="row">LINKS</th><td class="mono"><a href="https://github.com/gokila16/ast-audio-classification">code on GitHub</a></td></tr>
+</tbody></table>
+
+<div class="stats">
+<div class="stat panel"><div class="n">−26%</div><div class="l">parameters, down from 86M</div></div>
+<div class="stat panel"><div class="n">87→74 ms</div><div class="l">GPU inference latency on a T4 (−15.6%)</div></div>
+<div class="stat panel"><div class="n">4,491/4,491</div><div class="l">test clips with identical predictions after rebuilding the layers</div></div>
+</div>
+
+<figure class="chart" style="margin: 0">
+<figcaption class="cap">INFERENCE LATENCY, TESLA T4 (MS, LOWER IS BETTER)</figcaption>
+<div class="row"><div class="k">original</div><div class="track" style="--w: 87%"><div class="bar" style="background: var(--line)"></div><div class="v">87</div></div></div>
+<div class="row"><div class="k">compressed</div><div class="track" style="--w: 74%"><div class="bar" style="background: var(--pink)"></div><div class="v" style="color: var(--pink); font-weight: 700">74</div></div></div>
+<div class="row"><div class="k"></div><div class="track axis" aria-hidden="true"><span>0</span><span>50</span><span>100 ms</span></div></div>
+</figure>
+
+<div class="two">
+<section>
+<h2>WHAT I FOUND</h2>
+<p><b>Attention layers only look harder to prune.</b> They hold half as many parameters as the feed-forward layers, so the same cut hits them harder. Pruning equal shares of each layer’s capacity, both recovered about equally well: 0.966 vs. 0.970 F1.</p>
+<p><b>Zeroing weights isn’t a speedup.</b> The model only got faster once I physically rebuilt the smaller layers, and I checked that the rebuilt model made exactly the same predictions as before.</p>
+</section>
+<section>
+<h2>HOW I BUILT IT</h2>
+<p><b>A clean dataset first.</b> I merged 4 public audio sources into 40 unified classes, removed duplicates, and made train, validation, and test splits with no leakage.</p>
+<p><b>A study I’d trust.</b> The main comparison ran across 3 training seeds and 4 control conditions, with paired bootstrap confidence intervals on each comparison and a five-fold replication on a second dataset (ESC-50).</p>
+</section>
+</div>
+
+<figure class="paper-fig">
+<img src="audio-figure.png" alt="Line chart of macro F1 versus parameters removed. Attention pruning drops to 0.0023 F1 one-shot at 22.6M parameters removed while FFN pruning stays near 0.84; after distillation FFN returns to the 0.97 baseline and attention reaches 0.79." width="1905" height="870">
+<figcaption>Fig. 1 from the paper: macro F1 versus parameters removed. Open markers are one-shot pruning, filled markers are after one epoch of distillation.</figcaption>
+</figure>
+
+<nav class="pager" aria-label="More projects">
+<a href="socrates-duck.html">← socrates' duck</a>
+<a href="index.html#projects">all projects →</a>
+</nav>
+
+</main>
+</body>
+</html>

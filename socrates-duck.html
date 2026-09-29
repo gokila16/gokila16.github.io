@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Socrates' Duck · Gokila Harini Karthikeyan</title>
+<meta name="description" content="A VS Code extension that walks developers through their bugs with step-by-step hints instead of writing the fix for them.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Socrates' Duck: a debugging coach that won't hand you the answer">
+<meta property="og:description" content="A VS Code extension that coaches you through bugs with hints, not answers.">
+<meta property="og:image" content="https://gokila16.github.io/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#fdeef4">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<script>try{if(localStorage.getItem('side')==='dark')document.documentElement.dataset.theme='dark'}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karla:wght@400;600;700&family=Pixelify+Sans:wght@400;700&display=swap">
+<link rel="stylesheet" href="styles.css">
+<script src="main.js" defer></script>
+</head>
+<body>
+<main class="proj">
+
+<nav class="crumbs" aria-label="Breadcrumb">
+<div><a href="index.html">home</a> › <a href="index.html#projects">projects</a> › socrates' duck</div>
+<a href="index.html">← back to home base</a>
+</nav>
+
+<div class="proj-head">
+<div class="proj-icon"><svg viewBox="0 0 12 12" shape-rendering="crispEdges" aria-hidden="true"><path style="fill: var(--gold)" d="M3 1h3v1H3z M2 2h5v1H2z M2 3h5v1H2z M3 4h4v1H3z M3 5h4v1H3z M9 5h2v1H9z M10 4h1v1h-1z M2 6h9v1H2z M2 7h9v1H2z M3 8h7v1H3z M4 9h5v1H4z"/><path style="fill: var(--pink)" d="M0 3h2v1H0z"/><path fill="#1a0f17" d="M3 2h1v1H3z"/><path style="fill: var(--goldDeep)" d="M5 7h3v1H5z"/></svg></div>
+<div>
+<div class="tags"><span class="tag tag-blue">BUILT</span><span class="tag">2026 – PRESENT</span></div>
+<h1>Socrates' Duck: a debugging coach that won't hand you the answer</h1>
+</div>
+</div>
+
+<p class="proj-lede">A VS Code extension that walks developers through their bugs with step-by-step hints instead of writing the fix for them. It's built to teach, so the hardest part was making sure the hints never quietly give the answer away.</p>
+
+<table class="facts"><tbody>
+<tr><th scope="row">ROLE</th><td>Designed and built it: extension, backend, safety layer, and tests</td></tr>
+<tr><th scope="row">STACK</th><td>Python, FastAPI, LangGraph, LiteLLM, TypeScript, React, SQLite</td></tr>
+<tr><th scope="row">STATUS</th><td>Shipping to the VS Code Marketplace · link coming soon</td></tr>
+<tr><th scope="row">LINKS</th><td class="mono"><a href="https://github.com/gokila16/Socrates-Duck">code on GitHub</a></td></tr>
+</tbody></table>
+
+<!-- Demo GIF goes here once recorded: <div class="slot"><img src="duck-demo.gif" alt="..."></div> -->
+
+<div class="stats">
+<div class="stat panel"><div class="n">3 → 2</div><div class="l">LLM calls per follow-up hint, by caching the bug diagnosis</div></div>
+<div class="stat panel"><div class="n">7,776</div><div class="l">five-step user paths covered by one exhaustive test</div></div>
+<div class="stat panel"><div class="n">0</div><div class="l">lines of your code stored: no telemetry, private by design</div></div>
+</div>
+
+<section class="block">
+<h2>HOW IT WORKS</h2>
+<div class="flow">
+<div class="step"><b>VS Code extension</b><span>react + typescript</span></div><div class="arrow" aria-hidden="true">→</div>
+<div class="step"><b>FastAPI backend</b><span>live progress over SSE</span></div><div class="arrow" aria-hidden="true">→</div>
+<div class="step"><b>LangGraph pipeline</b><span>diagnose, then hint</span></div><div class="arrow" aria-hidden="true">→</div>
+<div class="step"><b>Safety check</b><span>rules + LLM reviewer</span></div><div class="arrow" aria-hidden="true">→</div>
+<div class="step"><b>Hint in your editor</b><span>one step at a time</span></div>
+</div>
+</section>
+
+<div class="two">
+<section>
+<h2>KEEPING IT SAFE</h2>
+<p><b>Two-layer leak guard.</b> Code-parsing rules catch complete solutions, and an LLM reviewer checks each hint. If the reviewer fails, the system falls back to a safe hint rather than risk a leak.</p>
+<p><b>Prompt-injection defense.</b> All user code is wrapped in random per-request markers, so text inside a file can’t pose as instructions.</p>
+<p><b>Stays on your machine.</b> The backend only listens on localhost, so a malicious repository can’t send your code anywhere.</p>
+</section>
+<section>
+<h2>ENGINEERING CHOICES</h2>
+<p><b>Predictable by design.</b> Hint difficulty lives in deterministic code, not the model, so behavior is testable.</p>
+<p><b>Any model provider.</b> A provider-agnostic layer over LiteLLM supports OpenAI and Anthropic, with typed errors, validated output, and per-step reasoning effort.</p>
+<p><b>Tested without API costs.</b> pytest and Vitest suites run on fake LLM providers, and GitHub Actions checks types (mypy, tsc) on every pull request.</p>
+</section>
+</div>
+
+<nav class="pager" aria-label="More projects">
+<a href="index.html#projects">← all projects</a>
+<a href="audio-compression.html">next: audio transformer compression →</a>
+</nav>
+
+</main>
+</body>
+</html>
