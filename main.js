@@ -138,7 +138,10 @@
     });
   });
 
-  // ---------- guestbook (saved in this visitor's browser) ----------
+  // ---------- guestbook: emails each note to Gokila, and keeps a copy in this visitor's browser ----------
+  // Web3Forms access key (from web3forms.com). It is safe to be public: it can only send mail to the owner's inbox.
+  var WEB3FORMS_KEY = '10cd5da1-15b2-453a-bd28-d391cb463ab7';
+
   var form = document.querySelector('.gb-form');
   if (form) {
     var list = document.querySelector('.gb-list');
@@ -184,10 +187,37 @@
       var n = form.elements.name.value.trim();
       var m = form.elements.note.value.trim();
       if (!n || !m) return;
-      entries.unshift({ name: n, msg: m, when: new Date().toLocaleDateString() });
-      store('guestbook', JSON.stringify(entries));
-      form.reset();
-      render();
+      var status = form.querySelector('.gb-status');
+      var submit = form.querySelector('button[type="submit"]');
+      var save = function () {
+        entries.unshift({ name: n, msg: m, when: new Date().toLocaleDateString() });
+        store('guestbook', JSON.stringify(entries));
+        form.reset();
+        render();
+      };
+      if (!WEB3FORMS_KEY) { save(); return; }
+      if (form.elements.botcheck && form.elements.botcheck.checked) { form.reset(); return; }
+      submit.disabled = true;
+      status.textContent = 'sending…';
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: 'New guestbook note from ' + n,
+          from_name: 'Portfolio guestbook',
+          name: n,
+          message: m
+        })
+      })
+        .then(function (r) { return r.json(); })
+        .then(function (res) {
+          if (!res.success) throw new Error(res.message);
+          save();
+          status.textContent = 'thanks for signing! ✦ your note is on its way to me.';
+        })
+        .catch(function () { status.textContent = 'that didn’t go through. please try again in a bit.'; })
+        .then(function () { submit.disabled = false; });
     });
   }
 })();

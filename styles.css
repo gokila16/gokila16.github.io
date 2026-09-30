@@ -265,6 +265,10 @@ a.card:hover { color: var(--ink); border-color: var(--pink); }
   align-self: flex-start; min-height: 44px; padding: 0 18px; background: var(--pink); color: var(--onPink);
   border: 0; cursor: pointer; font-family: var(--mono); font-size: 14px;
 }
+.gb-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.gb-status { font-family: var(--mono); font-size: 13px; color: var(--muted); }
+.gb-status:empty { display: none; }
+.gb-form button:disabled { opacity: .6; cursor: default; }
 .gb-empty { font-family: var(--mono); font-size: 13px; color: var(--muted); }
 .gb-entry { border: 1px dashed var(--line); padding: 12px 16px; display: flex; flex-direction: column; gap: 4px; }
 .gb-entry .who { font-family: var(--mono); font-size: 12px; color: var(--pink); }

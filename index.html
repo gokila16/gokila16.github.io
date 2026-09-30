@@ -284,7 +284,9 @@
 <input id="gb-name" name="name" type="text" autocomplete="name" maxlength="60" required>
 <label for="gb-msg">your note</label>
 <textarea id="gb-msg" name="note" rows="3" maxlength="500" required></textarea>
+<input type="checkbox" name="botcheck" class="gb-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
 <button type="submit">sign the guestbook</button>
+<div class="gb-status" aria-live="polite"></div>
 </form>
 <div class="gb-empty">no signatures yet. be the first!</div>
 <div class="gb-list" aria-live="polite"></div>
