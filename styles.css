@@ -101,7 +101,7 @@ button { color: inherit; }
   display: grid; grid-template-columns: 320px minmax(0, 1fr) 220px; column-gap: 56px; row-gap: 56px; align-items: start;
 }
 /* left bar: stays in view while the page scrolls; scrolls on its own if taller than the screen */
-.side { grid-column: 1; grid-row: 1 / span 10; align-self: stretch; }
+.side { grid-column: 1; grid-row: 1 / span 8; align-self: stretch; }
 .side-inner {
   position: sticky; top: 0; max-height: 100vh; overflow-y: auto; overscroll-behavior: contain;
   box-sizing: border-box; margin-top: -24px; padding: 24px 8px 32px 2px;
@@ -116,7 +116,7 @@ button { color: inherit; }
 .intro { display: flex; flex-direction: column; gap: 10px; }
 .id-row { display: flex; flex-direction: column; gap: 10px; }
 .avatar {
-  width: 120px; height: 120px; flex-shrink: 0; box-sizing: border-box;
+  width: 240px; height: 240px; flex-shrink: 0; box-sizing: border-box;
   border: 2px dashed var(--pink); background: var(--panel);
   display: flex; align-items: center; justify-content: center; text-align: center; padding: 8px;
   font-family: var(--mono); font-size: 11px; line-height: 1.4; color: var(--muted);
@@ -192,9 +192,6 @@ button { color: inherit; }
 #about { gap: 16px; }
 #about p { margin: 0; font-size: 19px; line-height: 1.65; color: var(--soft); }
 
-.log { display: flex; flex-direction: column; gap: 10px; font-size: 17px; line-height: 1.45; }
-.log div { display: flex; gap: 20px; }
-.log .when { width: 86px; flex-shrink: 0; font-family: var(--mono); font-size: 13px; color: var(--muted); padding-top: 2px; }
 
 .filters { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 .filters .count { font-family: var(--mono); font-size: 12px; color: var(--muted); margin-left: 6px; }
@@ -251,15 +248,9 @@ a.card:hover { color: var(--ink); border-color: var(--pink); }
 .tools th { padding: 9px 18px 9px 0; font-family: var(--mono); font-size: 13px; font-weight: 400; color: var(--pink); vertical-align: top; width: 130px; text-align: left; }
 .tools td { padding: 9px 0; font-size: 16px; line-height: 1.5; color: var(--soft); }
 
-#notes { gap: 6px; }
-#notes .blurb { margin: 6px 0 4px; font-size: 16px; color: var(--soft); }
-.note {
   display: flex; justify-content: space-between; gap: 18px; padding: 14px 0;
   border-bottom: 1px dashed var(--line); text-decoration: none; color: var(--ink);
 }
-a.note:hover { color: var(--pinkHover); }
-.note .t { font-size: 18px; line-height: 1.4; }
-.note .d { flex-shrink: 0; font-family: var(--mono); font-size: 12px; color: var(--muted); padding-top: 3px; }
 
 #guestbook .blurb { margin: 0; font-size: 16px; line-height: 1.5; color: var(--soft); }
 .gb-form { padding: 18px 20px; display: flex; flex-direction: column; gap: 10px; }
@@ -335,9 +326,6 @@ a.note:hover { color: var(--pinkHover); }
   .section { gap: 12px; }
   #about { gap: 14px; }
   #about p { font-size: 17px; line-height: 1.6; }
-  .log { font-size: 15px; }
-  .log div { gap: 14px; }
-  .log .when { width: 64px; font-size: 12px; padding-top: 1px; }
   .filters { gap: 6px; }
 
   .card { display: grid; grid-template-columns: 48px minmax(0, 1fr); column-gap: 12px; row-gap: 8px; padding: 16px; }
@@ -382,9 +370,6 @@ a.note:hover { color: var(--pinkHover); }
   .tools th { width: auto; padding: 0; font-size: 12px; }
   .tools td { padding: 0; font-size: 15px; }
 
-  #notes { gap: 4px; }
-  .note { padding: 12px 0; }
-  .note .t { font-size: 16px; }
 
   #guestbook .blurb { font-size: 15px; }
   .gb-form { border: 0; background: transparent; padding: 0; gap: 12px; }
