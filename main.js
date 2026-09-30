@@ -143,6 +143,8 @@
   if (form) {
     var list = document.querySelector('.gb-list');
     var empty = document.querySelector('.gb-empty');
+    var recent = document.querySelector('.recent-list');
+    var recentEmpty = document.querySelector('.recent-empty');
     var entries = [];
     try { entries = JSON.parse(store('guestbook') || '[]') || []; } catch (e) { entries = []; }
     var render = function () {
@@ -160,6 +162,21 @@
         list.appendChild(box);
       });
       empty.hidden = entries.length > 0;
+      if (recent) {
+        recent.textContent = '';
+        entries.slice(0, 3).forEach(function (en) {
+          var row = document.createElement('div');
+          var who = document.createElement('span');
+          who.className = 'who';
+          who.textContent = en.name;
+          var msg = document.createElement('span');
+          msg.className = 'msg';
+          msg.textContent = '“' + (en.msg.length > 60 ? en.msg.slice(0, 57) + '…' : en.msg) + '”';
+          row.append(who, msg);
+          recent.appendChild(row);
+        });
+        recentEmpty.hidden = entries.length > 0;
+      }
     };
     render();
     form.addEventListener('submit', function (e) {

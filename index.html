@@ -31,8 +31,9 @@
 <div class="layout">
 <button class="planet" aria-label="Pixel planet. Click to switch between light side and dark side."><svg width="64" height="48" viewBox="0 0 14 11" shape-rendering="crispEdges" aria-hidden="true"><path style="fill: var(--gold)" d="M0 5h3v1H0z M11 5h3v1h-3z"/><path style="fill: var(--pinkSoft)" d="M5 1h4v1H5z M4 2h6v1H4z M3 3h8v5H3z M4 8h6v1H4z M5 9h4v1H5z"/><path style="fill: var(--pink)" d="M5 1h4v1H5z M9 2h1v1H9z M10 3h1v5h-1z M9 6h1v2H9z M8 8h2v1H8z M5 9h4v1H5z M4 8h1v1H4z M3 3h1v5H3z M4 2h1v1H4z"/><path fill="#ffffff" d="M5 2h2v1H5z M4 3h1v1H4z"/><path style="fill: var(--gold)" d="M1 6h12v1H1z"/></svg></button>
 
-<!-- ============ left column ============ -->
+<!-- ============ left: sticky bar ============ -->
 <header class="side">
+<div class="side-inner">
 <div class="side-toggle">
 <span>choose your side:</span>
 <button class="chip" data-side="light" aria-pressed="true">light side</button>
@@ -45,7 +46,7 @@
 <h1>Gokila Harini Krishna Karthikeyan</h1>
 </div>
 <div class="role">AI engineer · researcher · builder</div>
-<p class="lede">I train, shrink, and evaluate models, and I build the software that puts them in people's hands.</p>
+<p class="lede">I build things, break them on purpose, and build them again, better.Lately, those things are mostly AI models and the tools around them.</p>
 <p class="promise">↳ everything is on this one page. no loading screens, promise.</p>
 </div>
 
@@ -56,7 +57,7 @@
 
 <nav class="tiles" aria-label="Main">
 <a href="#about"><svg viewBox="0 0 12 12" shape-rendering="crispEdges" aria-hidden="true"><path style="fill: var(--gold)" d="M3 1h3v1H3z M2 2h5v1H2z M2 3h5v1H2z M3 4h4v1H3z M3 5h4v1H3z M9 5h2v1H9z M10 4h1v1h-1z M2 6h9v1H2z M2 7h9v1H2z M3 8h7v1H3z M4 9h5v1H4z"/><path style="fill: var(--pink)" d="M0 3h2v1H0z"/><path fill="#1a0f17" d="M3 2h1v1H3z"/><path style="fill: var(--goldDeep)" d="M5 7h3v1H5z"/></svg>/about/</a>
-<a href="#log"><svg viewBox="0 0 12 12" shape-rendering="crispEdges" aria-hidden="true"><path style="fill: var(--ink)" d="M2 1h7v1H2z M2 10h8v1H2z M2 2h1v8H2z M9 2h1v8H9z"/><path style="fill: var(--pink)" d="M4 3h4v1H4z M4 5h4v1H4z M4 7h3v1H4z"/></svg>/log/</a>
+<a href="#awards"><svg viewBox="0 0 12 12" shape-rendering="crispEdges" aria-hidden="true"><path style="fill: var(--pink)" d="M3 0h2v2H3z M7 0h2v2H7z M4 2h1v1H4z M7 2h1v1H7z M5 3h2v1H5z"/><path style="fill: var(--gold)" d="M4 4h4v1H4z M3 5h6v3H3z M4 8h4v1H4z"/><path fill="#ffffff" d="M4 5h1v1H4z"/><path style="fill: var(--goldDeep)" d="M5 6h2v1H5z"/></svg>/awards/</a>
 <a href="#projects"><svg viewBox="0 0 12 12" shape-rendering="crispEdges" aria-hidden="true"><path style="fill: var(--blue)" d="M3 3h6v1H3z M3 8h6v1H3z M3 4h1v4H3z M8 4h1v4H8z M4 1h1v2H4z M7 1h1v2H7z M4 9h1v2H4z M7 9h1v2H7z M1 4h2v1H1z M1 7h2v1H1z M9 4h2v1H9z M9 7h2v1H9z"/><path style="fill: var(--pink)" d="M5 5h2v2H5z"/></svg>/projects/</a>
 <a href="#papers"><svg viewBox="0 0 12 12" shape-rendering="crispEdges" aria-hidden="true"><path style="fill: var(--gold)" d="M5 0h2v2H5z M4 2h4v1H4z M1 3h10v1H1z M2 4h8v1H2z M3 5h6v2H3z M2 7h3v2H2z M7 7h3v2H7z M1 9h2v1H1z M9 9h2v1H9z"/></svg>/papers/</a>
 <a href="#experience"><svg viewBox="0 0 12 12" shape-rendering="crispEdges" aria-hidden="true"><path style="fill: var(--ink)" d="M4 2h4v1H4z M4 3h1v1H4z M7 3h1v1H7z"/><path style="fill: var(--blue)" d="M1 4h10v6H1z"/><path style="fill: var(--pink)" d="M1 6h10v1H1z"/><path style="fill: var(--gold)" d="M5 6h2v2H5z"/></svg>/experience/</a>
@@ -68,7 +69,7 @@
 
 <div class="currently panel">
 <div class="label">CURRENTLY</div>
-<div class="body">finishing my M.S. at CSULB (May 2027)<br>open to SWE, AI engineer &amp; ML research roles<br>shipping: Socrates' Duck to the VS Code Marketplace<br>reading: books where fish rain from the sky</div>
+<div class="body">finishing my M.S. at CSULB (May 2027)<br>open to SWE, AI engineer &amp; ML research roles.<br>Right now working on Socrates' Duck to the VS Code Marketplace<br></div>
 </div>
 
 <div class="socials">
@@ -82,19 +83,19 @@
 <div class="badge badge-pink">PINK POWERED</div>
 <div class="badge badge-blue">CSULB '27</div>
 </div>
+</div>
 </header>
 
-<!-- ============ right column ============ -->
+<!-- ============ middle: content, right: rail ============ -->
 <main class="main">
-
-<section id="about" class="section">
+<section id="about" class="section" style="grid-row: 1">
 <h2>/ABOUT/</h2>
 <p>Hi! I'm Gokila, a CS master's student at Cal State Long Beach. I like understanding why models behave the way they do, and then making them smaller, faster, and more honest about how well they work. Lately that's meant pruning audio transformers, rethinking GPU memory for LLM inference, and measuring whether LLM-written tests really catch bugs.</p>
 <p>I also love shipping things. Before grad school I spent a year and a half at TransUnion building full-stack apps and test automation, and right now I'm building a VS Code extension that teaches you to debug instead of doing it for you.</p>
-<p>When I'm away from the keyboard, you'll find me at the beach, wandering around town people-watching, stargazing, reading novels where fish rain from the sky, or rewatching Star Wars for the hundredth time. When I'm not away from it, I'm happily staring at my monitor for hours, building something.</p>
+<p>When I'm away from the keyboard, you'll find me at the beach, wandering around town, people-watching, stargazing, reading novels where fish rain from the sky, or rewatching old cartoons and sitcoms for the hunderedth time. When I'm not away from it, I'm happily staring at my monitor for hours, building something.</p>
 </section>
 
-<section id="log" class="section">
+<section id="log" class="section" style="grid-row: 2">
 <h2>/LOG/</h2>
 <div class="log">
 <div><span class="when">now</span><span>Shipping Socrates' Duck to the VS Code Marketplace</span></div>
@@ -104,7 +105,7 @@
 </div>
 </section>
 
-<section id="projects" class="section">
+<section id="projects" class="section" style="grid-row: 3">
 <h2>/PROJECTS/</h2>
 <div class="filters" role="group" aria-label="Filter projects">
 <button class="chip" data-filter="all" aria-pressed="true">all</button>
@@ -153,15 +154,16 @@
 <a class="card" href="https://github.com/gokila16/Intelligent-CCTV-Surveillance-System" data-tags="research">
 <div class="card-icon"><svg viewBox="0 0 12 12" shape-rendering="crispEdges" aria-hidden="true"><path style="fill: var(--ink)" d="M2 3h7v4H2z M4 7h1v3H4z M2 10h5v1H2z"/><path style="fill: var(--pink)" d="M9 4h2v2H9z"/></svg></div>
 <div class="card-body">
-<div class="card-title"><span class="name">Intelligent CCTV Surveillance</span> <span class="tag tag-gold">★ BEST PAPER</span></div>
+<div class="card-title"><span class="name">Intelligent CCTV Surveillance</span> <span class="tag tag-gold">★ BEST PAPER</span> <span class="tag">RESFES AWARD</span></div>
 <div class="card-desc">Real-time weapon and activity detection with YOLOv7 and a CNN-LSTM, 92% accuracy. Published in Springer CCIS.</div>
 <div class="card-meta">yolov7 · cnn-lstm · opencv</div>
 </div>
 </a>
 </section>
 
-<section id="papers" class="section">
+<section id="papers" class="section" style="grid-row: 4">
 <h2>/PAPERS/</h2>
+<div class="m-note">4 papers · 2 published · 2 under review · earlier ones as Gokila Harini Krishna K</div>
 <div class="paper-card panel">
 <div class="tags"><span class="tag">FIRST AUTHOR</span><span class="tag tag-blue">UNDER REVIEW</span></div>
 <div class="title">Pruning Sensitivity of Audio Spectrogram Transformers: A Parameter-Matched Comparison of Attention and FFN Layers</div>
@@ -176,15 +178,64 @@
 <div class="venue">Under double-anonymous review</div>
 </div>
 <div class="paper-card panel">
+<div class="tags"><span class="tag">PUBLISHED · IEEE</span></div>
+<div class="title">The Traffic Violation Detection System using YoloV7</div>
+<div class="authors">S. Harini, M. Suguna, A. T. V. Subramani, <b>G. H. Krishna</b></div>
+<div class="venue">ICIPTM 2023 · IEEE</div>
+<div class="authors">Detects multiple traffic violations from a single surveillance video, reaching 93% accuracy on red-light skipping.</div>
+<div class="links"><a href="https://ieeexplore.ieee.org/document/10118105/">ieee xplore</a><a href="https://www.researchgate.net/publication/370661395_The_Traffic_Violation_Detection_System_using_YoloV7">researchgate</a></div>
+</div>
+<div class="paper-card panel">
 <div class="tags"><span class="tag tag-gold">★ BEST PAPER</span></div>
 <div class="title">Intelligent CCTV Surveillance</div>
 <div class="venue">ICNGCS 2023 · published in Springer CCIS</div>
 <div class="links"><a href="https://github.com/gokila16/Intelligent-CCTV-Surveillance-System">code</a></div>
 </div>
 </section>
+<aside class="rail" style="grid-row: 4">
+<div class="rule"><svg viewBox="0 0 12 12" shape-rendering="crispEdges" aria-hidden="true"><path style="fill: var(--gold)" d="M5 0h2v2H5z M4 2h4v1H4z M1 3h10v1H1z M2 4h8v1H2z M3 5h6v2H3z M2 7h3v2H2z M7 7h3v2H7z M1 9h2v1H1z M9 9h2v1H9z"/></svg><span></span></div>
+<div class="txt">4 papers so far<br>2 published (IEEE, Springer)<br>2 under review<br>2 first-author<br><br><span class="dim">earlier papers are under<br>Gokila Harini Krishna K</span></div>
+</aside>
 
-<section id="experience" class="section">
+<section id="awards" class="section" style="grid-row: 5">
+<h2>/AWARDS/</h2>
+<div class="m-note">3 awards · 1 international · 2 for the same CCTV system</div>
+<div class="award panel">
+<div class="award-icon"><svg viewBox="0 0 12 12" shape-rendering="crispEdges" aria-hidden="true"><path style="fill: var(--pink)" d="M3 0h2v2H3z M7 0h2v2H7z M4 2h1v1H4z M7 2h1v1H7z M5 3h2v1H5z"/><path style="fill: var(--gold)" d="M4 4h4v1H4z M3 5h6v3H3z M4 8h4v1H4z"/><path fill="#ffffff" d="M4 5h1v1H4z"/><path style="fill: var(--goldDeep)" d="M5 6h2v1H5z"/></svg></div>
+<div class="award-body">
+<div class="title">★ Best Paper Award</div>
+<div class="venue">ICNGCS 2023 · published in Springer CCIS</div>
+<div class="desc">For the Intelligent CCTV Surveillance System: real-time weapon and activity detection.</div>
+<div class="extra">best paper of the conference</div>
+</div>
+</div>
+<div class="award panel">
+<div class="award-icon"><svg viewBox="0 0 12 12" shape-rendering="crispEdges" aria-hidden="true"><path style="fill: var(--pink)" d="M3 0h2v2H3z M7 0h2v2H7z M4 2h1v1H4z M7 2h1v1H7z M5 3h2v1H5z"/><path style="fill: var(--gold)" d="M4 4h4v1H4z M3 5h6v3H3z M4 8h4v1H4z"/><path fill="#ffffff" d="M4 5h1v1H4z"/><path style="fill: var(--goldDeep)" d="M5 6h2v1H5z"/></svg></div>
+<div class="award-body">
+<div class="title">Potential Award</div>
+<div class="venue">ResFes 2022 · international research festival by FPT University, Vietnam</div>
+<div class="desc">With Team Nova, for the Intelligent CCTV Surveillance Monitoring System, presented to an international panel.</div>
+<div class="extra">cash prize of 5 million VND</div>
+</div>
+</div>
+<div class="award panel">
+<div class="award-icon"><svg viewBox="0 0 12 12" shape-rendering="crispEdges" aria-hidden="true"><path style="fill: var(--pink)" d="M3 0h2v2H3z M7 0h2v2H7z M4 2h1v1H4z M7 2h1v1H7z M5 3h2v1H5z"/><path style="fill: var(--gold)" d="M4 4h4v1H4z M3 5h6v3H3z M4 8h4v1H4z"/><path fill="#ffffff" d="M4 5h1v1H4z"/><path style="fill: var(--goldDeep)" d="M5 6h2v1H5z"/></svg></div>
+<div class="award-body">
+<div class="title">Special Prize</div>
+<div class="venue">Madurai Hackathon 2022 · 48 hours · theme: “Smart Madurai”</div>
+<div class="desc">Built a smart-city solution with teammate Harini S, competing against teams from across India.</div>
+<div class="extra">cash award + an industrial machine vision AI developer kit</div>
+</div>
+</div>
+</section>
+<aside class="rail" style="grid-row: 5">
+<div class="rule"><svg viewBox="0 0 12 12" shape-rendering="crispEdges" aria-hidden="true"><path style="fill: var(--pink)" d="M3 0h2v2H3z M7 0h2v2H7z M4 2h1v1H4z M7 2h1v1H7z M5 3h2v1H5z"/><path style="fill: var(--gold)" d="M4 4h4v1H4z M3 5h6v3H3z M4 8h4v1H4z"/><path fill="#ffffff" d="M4 5h1v1H4z"/><path style="fill: var(--goldDeep)" d="M5 6h2v1H5z"/></svg><span></span></div>
+<div class="txt">3 awards<br>1 international<br>2 for the same CCTV system<br>(it really wanted to be noticed)</div>
+</aside>
+
+<section id="experience" class="section" style="grid-row: 6">
 <h2>/EXPERIENCE/</h2>
+<div class="m-note">1.5 years in industry · 6 months of NSF-funded research</div>
 <div class="job">
 <div class="when">JAN 2026 –<br>JUN 2026</div>
 <div class="what">
@@ -213,9 +264,14 @@
 </div>
 <a class="resume-link" href="resume.pdf" download>download the full résumé (pdf) →</a>
 </section>
+<aside class="rail" style="grid-row: 6">
+<div class="rule"><svg viewBox="0 0 12 12" shape-rendering="crispEdges" aria-hidden="true"><path style="fill: var(--ink)" d="M4 2h4v1H4z M4 3h1v1H4z M7 3h1v1H7z"/><path style="fill: var(--blue)" d="M1 4h10v6H1z"/><path style="fill: var(--pink)" d="M1 6h10v1H1z"/><path style="fill: var(--gold)" d="M5 6h2v2H5z"/></svg><span></span></div>
+<div class="txt">1.5 years in industry<br>6 months of NSF-funded research<br>from test automation<br>to training models</div>
+</aside>
 
-<section id="tools" class="section">
+<section id="tools" class="section" style="grid-row: 7">
 <h2>/TOOLS/</h2>
+<div class="m-note">reaching for most lately: PyTorch, LangGraph, FastAPI</div>
 <table class="tools"><tbody>
 <tr><th scope="row">models</th><td>PyTorch, Hugging Face Transformers, TensorFlow, scikit-learn, OpenCV</td></tr>
 <tr><th scope="row">llm apps</th><td>LangGraph, LiteLLM, LLM evaluation, prompt engineering, guardrails, multi-model routing</td></tr>
@@ -225,17 +281,27 @@
 <tr><th scope="row">testing</th><td>pytest, JUnit, Mockito, Vitest, JaCoCo, PIT, GitHub Actions, GitLab CI/CD</td></tr>
 </tbody></table>
 </section>
+<aside class="rail" style="grid-row: 7">
+<div class="rule"><svg viewBox="0 0 12 12" shape-rendering="crispEdges" aria-hidden="true"><path style="fill: var(--blue)" d="M5 1h2v2H5z M5 9h2v2H5z M1 5h2v2H1z M9 5h2v2H9z M2 2h2v2H2z M8 2h2v2H8z M2 8h2v2H2z M8 8h2v2H8z M3 3h6v6H3z"/><path style="fill: var(--bg)" d="M5 5h2v2H5z"/></svg><span></span></div>
+<div class="txt">reaching for most lately:<br>PyTorch, LangGraph, FastAPI</div>
+</aside>
 
-<section id="notes" class="section">
+<section id="notes" class="section" style="grid-row: 8">
 <h2>/NOTES/</h2>
+<div class="m-note">where I think out loud about results that surprised me</div>
 <p class="blurb">Short write-ups about things I found surprising in my work.</p>
 <div class="note"><span class="t">Attention layers aren’t harder to prune. They’re just smaller.</span><span class="d">coming soon</span></div>
 <div class="note"><span class="t">More code context made LLM tests compile more, but catch fewer bugs</span><span class="d">coming soon</span></div>
 <div class="note"><span class="t">Why zeroing out weights doesn’t make a model any faster</span><span class="d">coming soon</span></div>
 </section>
+<aside class="rail" style="grid-row: 8">
+<div class="rule"><svg viewBox="0 0 12 12" shape-rendering="crispEdges" aria-hidden="true"><path style="fill: var(--pink)" d="M1 4h2v4H1z"/><path fill="#b9a9b1" d="M3 4h1v4H3z"/><path style="fill: var(--gold)" d="M4 4h5v4H4z"/><path style="fill: var(--goldDeep)" d="M4 5h5v1H4z"/><path fill="#e8c9a0" d="M9 4h1v4H9z M10 5h1v2h-1z"/><path fill="#2a1420" d="M11 5h1v2h-1z"/></svg><span></span></div>
+<div class="txt">where I think out loud<br>about results that<br>surprised me</div>
+</aside>
 
-<section id="guestbook" class="section">
+<section id="guestbook" class="section" style="grid-row: 9">
 <h2>/GUESTBOOK/</h2>
+<div class="m-note">say hi, or tell me which side you picked</div>
 <p class="blurb">Passing through the galaxy? Leave a note, say hi, or tell me which side you picked.</p>
 <form class="gb-form panel">
 <label for="gb-name">your name</label>
@@ -247,12 +313,20 @@
 <div class="gb-empty">no signatures yet. be the first!</div>
 <div class="gb-list" aria-live="polite"></div>
 </section>
+<aside class="rail" style="grid-row: 9">
+<div class="rule"><svg viewBox="0 0 12 12" shape-rendering="crispEdges" aria-hidden="true"><path style="fill: var(--pink)" d="M2 2h3v1H2z M7 2h3v1H7z M1 3h5v1H1z M6 3h5v1H6z M1 4h10v2H1z M2 6h8v1H2z M3 7h6v1H3z M4 8h4v1H4z M5 9h2v1H5z"/><path fill="#ffffff" d="M2 3h1v1H2z"/></svg><span></span></div>
+<div class="txt">say hi, leave a note,<br>or tell me which side<br>you picked</div>
+<div class="recent panel">
+<div class="label">RECENT VISITORS</div>
+<div class="recent-empty">no visitors yet. you could be the first!</div>
+<div class="recent-list"></div>
+</div>
+</aside>
 
-<footer class="foot">
+<footer class="foot" style="grid-row: 10">
 <span>© 2026 Gokila Harini Karthikeyan · last updated September 2026</span>
 <button class="hyper" data-hyperspace>hyperspace back to the top ✦</button>
 </footer>
-
 </main>
 </div>
 </div>
