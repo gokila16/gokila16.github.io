@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TinyRobotLM · Gokila Harini Karthikeyan</title>
+<meta name="description" content="A 3.2M-parameter language model built from scratch that runs on a 2019 Jetson Nano and turns typed commands into robot movement, fully offline. Best Overall at MarinaHacks 6.0.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TinyRobotLM: a language model small enough to live on the robot">
+<meta property="og:description" content="A 3.2M-parameter transformer, trained from scratch, that drives a robot fully offline on a 2019 Jetson Nano. Best Overall at MarinaHacks 6.0.">
+<meta property="og:image" content="https://gokila16.github.io/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#fdeef4">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<script>try{if(localStorage.getItem('side')==='dark')document.documentElement.dataset.theme='dark'}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karla:wght@400;600;700&family=Pixelify+Sans:wght@400;700&display=swap">
+<link rel="stylesheet" href="styles.css">
+<script src="main.js" defer></script>
+</head>
+<body>
+<main class="proj">
+
+<nav class="crumbs" aria-label="Breadcrumb">
+<div><a href="index.html">home</a> › <a href="index.html#projects">projects</a> › tinyrobotlm</div>
+<a href="index.html">← back to home base</a>
+</nav>
+
+<div class="proj-head">
+<div class="proj-icon"><svg viewBox="0 0 12 12" shape-rendering="crispEdges" aria-hidden="true"><path style="fill: var(--gold)" d="M5 0h2v1H5z M1 3h1v2H1z M10 3h1v2h-1z M5 8h2v1H5z"/><path style="fill: var(--ink)" d="M5 1h2v1H5z M5 6h2v1H5z M3 10h2v1H3z M7 10h2v1H7z"/><path style="fill: var(--pink)" d="M2 2h8v4H2z"/><path fill="#1a0f17" d="M4 3h1v1H4z M7 3h1v1H7z"/><path style="fill: var(--goldDeep)" d="M4 4h4v1H4z"/><path style="fill: var(--blue)" d="M3 7h6v1H3z M3 8h2v2H3z M7 8h2v2H7z M5 9h2v1H5z"/></svg></div>
+<div>
+<div class="tags"><span class="tag tag-gold">★ BEST OVERALL</span><span class="tag tag-blue">BUILT</span><span class="tag">MARINAHACKS 6.0 · OCT 2026</span></div>
+<h1>TinyRobotLM: a language model small enough to live on the robot</h1>
+</div>
+</div>
+
+<p class="proj-lede">A 3.2M-parameter transformer we trained from scratch that turns plain-English commands into robot programs, running fully offline on a 2019 Jetson Nano right next to a YOLO detector. No cloud calls, no API bill, and latency you barely notice. Built in 24 hours, and it won Best Overall.</p>
+
+<table class="facts"><tbody>
+<tr><th scope="row">ROLE</th><td>Built with Stephanie Noe in 24 hours: dataset, model, on-device inference, safety layer, and web interface</td></tr>
+<tr><th scope="row">STACK</th><td>Python, PyTorch, NumPy, YOLO, Jetson Nano (JetPack 4.5), HTML/CSS/JavaScript</td></tr>
+<tr><th scope="row">RESULT</th><td>Best Overall, MarinaHacks 6.0</td></tr>
+<tr><th scope="row">LINKS</th><td class="mono"><a href="https://github.com/stephkmn/tiny-robot-lm">code on GitHub</a> · <a href="https://devpost.com/software/tiny-robot-lm">devpost</a> · <a href="https://www.youtube.com/watch?v=Lmy4Fd--4fg">video on YouTube</a></td></tr>
+</tbody></table>
+
+<section class="block">
+<h2>DEMO</h2>
+<div class="video">
+<iframe src="https://www.youtube-nocookie.com/embed/Lmy4Fd--4fg" title="TinyRobotLM demo video" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+</section>
+
+<div class="stats">
+<div class="stat panel"><div class="n">93.8%</div><div class="l">exact match on phrasings the model never saw in training</div></div>
+<div class="stat panel"><div class="n">25×</div><div class="l">more frequent perception than the old cloud-API setup</div></div>
+<div class="stat panel"><div class="n">~720</div><div class="l">paid cloud image-API calls removed per robot-hour</div></div>
+<div class="stat panel"><div class="n">3.2M</div><div class="l">parameters in a decoder-only transformer, trained from scratch</div></div>
+<div class="stat panel"><div class="n">13 MB</div><div class="l">final model, running with no ML framework at all</div></div>
+<div class="stat panel"><div class="n">2×10⁻⁶</div><div class="l">max gap between our NumPy and PyTorch outputs over 150 commands</div></div>
+</div>
+
+<section class="block">
+<h2>HOW IT WORKS</h2>
+<div class="flow">
+<div class="step"><b>Web interface</b><span>type a command</span></div><div class="arrow" aria-hidden="true">→</div>
+<div class="step"><b>TinyRobotLM</b><span>text → robot program</span></div><div class="arrow" aria-hidden="true">→</div>
+<div class="step"><b>Safety check</b><span>grammar + motion limits</span></div><div class="arrow" aria-hidden="true">→</div>
+<div class="step"><b>Motor bridge</b><span>http, watchdog-safe</span></div><div class="arrow" aria-hidden="true">→</div>
+<div class="step"><b>Robot moves</b><span>yolo confirms targets</span></div>
+</div>
+<p class="proj-lede">“move forward until you see a bottle” → <code>FWD UNTIL bottle</code></p>
+</section>
+
+<div class="two">
+<section>
+<h2>FITTING ON A 2019 JETSON</h2>
+<p><b>Small model, clean data.</b> We built a 41,000-example dataset with no leakage between training and test phrasings, so the 93.8% reflects commands the model had never seen.</p>
+<p><b>No framework needed.</b> The Nano is stuck on JetPack 4.5 and Python 3.6, so I rewrote transformer inference in pure NumPy with KV caching. It matches PyTorch within 2×10⁻⁶.</p>
+<p><b>Two models, one board.</b> Language inference and YOLO perception run side by side on the Nano, replacing a camera-to-cloud loop that sent one frame every five seconds.</p>
+</section>
+<section>
+<h2>KEEPING IT SAFE</h2>
+<p><b>Only valid programs.</b> Constrained decoding and a grammar validator mean the model can only produce commands the robot knows how to run.</p>
+<p><b>Hard limits.</b> Every motion is capped at 15 seconds, the controller works with the motor watchdog, and an emergency stop is always one click away.</p>
+<p><b>No jumping at shadows.</b> A target has to show up in two frames in a row before the robot acts on it.</p>
+</section>
+</div>
+
+<nav class="pager" aria-label="More projects">
+<a href="index.html#projects">← all projects</a>
+<a href="socrates-duck.html">next: socrates' duck →</a>
+</nav>
+
+</main>
+</body>
+</html>
