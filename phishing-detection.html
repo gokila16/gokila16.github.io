@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adversarial Phishing Detection · Gokila Harini Karthikeyan</title>
+<meta name="description" content="Phishing classifiers on 215,795 websites, stress-tested with ablation, SHAP and 600 simulated evasion attacks, plus a two-layer ensemble that cut misses under page-cloning attacks by 84%.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Adversarial Phishing Detection: near-perfect accuracy, and where it breaks">
+<meta property="og:description" content="Phishing detectors on 215K websites, stress-tested with 600 simulated evasion attacks. A two-layer ensemble cut misses under page cloning by 84% with zero added false positives.">
+<meta property="og:image" content="https://gokila16.github.io/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#fdeef4">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<script>try{if(localStorage.getItem('side')==='dark')document.documentElement.dataset.theme='dark'}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karla:wght@400;600;700&family=Pixelify+Sans:wght@400;700&display=swap">
+<link rel="stylesheet" href="styles.css">
+<script src="main.js" defer></script>
+</head>
+<body>
+<main class="proj">
+
+<nav class="crumbs" aria-label="Breadcrumb">
+<div><a href="index.html">home</a> › <a href="index.html#projects">projects</a> › phishing detection</div>
+<a href="index.html">← back to home base</a>
+</nav>
+
+<div class="proj-head">
+<div class="proj-icon"><svg viewBox="0 0 12 12" shape-rendering="crispEdges" aria-hidden="true"><path style="fill: var(--ink)" d="M8 0h1v6H8z M7 6h1v1H7z"/><path style="fill: var(--gold)" d="M3 6h4v1H3z M2 7h6v3H2z M3 10h4v1H3z"/><path style="fill: var(--pink)" d="M8 7h2v1H8z M9 8h2v1H9z M8 9h2v1H8z"/><path fill="#1a0f17" d="M3 8h1v1H3z"/><path style="fill: var(--blue)" d="M0 1h6v4H0z"/><path fill="#ffffff" d="M1 2h4v1H1z"/></svg></div>
+<div>
+<div class="tags"><span class="tag tag-blue">RESEARCH</span><span class="tag">ML SECURITY</span><span class="tag">ADVERSARIAL EVALUATION</span></div>
+<h1>Phishing detection: near-perfect accuracy, and where it breaks</h1>
+</div>
+</div>
+
+<p class="proj-lede">Phishing classifiers trained on 215,795 websites hit near-perfect scores almost immediately. That made me suspicious, so I spent most of the project attacking them: checking for leakage, ablating features, explaining the model with SHAP, and simulating 600 evasion attempts. The result is a detector that knows where it's weak, and a two-layer ensemble built to cover that weakness.</p>
+
+<table class="facts"><tbody>
+<tr><th scope="row">ROLE</th><td>Data pipeline, modeling, validation, adversarial evaluation framework, ensemble design, and the final presentation</td></tr>
+<tr><th scope="row">STACK</th><td>Python, LightGBM, scikit-learn (logistic regression, decision trees, k-means), SHAP, pandas</td></tr>
+<tr><th scope="row">DATA</th><td>215,795 websites, 50+ URL and page features, domain-grouped train/test split</td></tr>
+<tr><th scope="row">RESULT</th><td>84% fewer misses under page-cloning attacks, zero added false positives; presented to faculty and industry judges</td></tr>
+</tbody></table>
+
+<div class="stats">
+<div class="stat panel"><div class="n">99.96%</div><div class="l">recall from a 2-rule decision tree, with zero false positives</div></div>
+<div class="stat panel"><div class="n">78%</div><div class="l">of model reliance on a single URL-similarity feature, per SHAP</div></div>
+<div class="stat panel"><div class="n">596 / 600</div><div class="l">successful simulated evasions that required spoofing the domain</div></div>
+<div class="stat panel"><div class="n">99.45%</div><div class="l">recall still left after removing the top 14 features</div></div>
+<div class="stat panel"><div class="n">−84%</div><div class="l">misses under an AI-style page-cloning attack (32 → 5 per 10,000)</div></div>
+<div class="stat panel"><div class="n">87%</div><div class="l">of 92,300 phishing sites were near-empty bait pages</div></div>
+</div>
+
+<section class="block">
+<h2>HOW I STRESS-TESTED IT</h2>
+<div class="flow">
+<div class="step"><b>Grouped split</b><span>no domain in both sets</span></div><div class="arrow" aria-hidden="true">→</div>
+<div class="step"><b>Sanity checks</b><span>shuffled labels → AUC ≈ 0.5</span></div><div class="arrow" aria-hidden="true">→</div>
+<div class="step"><b>Ablation</b><span>15 retrains, top features out</span></div><div class="arrow" aria-hidden="true">→</div>
+<div class="step"><b>SHAP</b><span>what it really relies on</span></div><div class="arrow" aria-hidden="true">→</div>
+<div class="step"><b>Attack sim</b><span>600 cost-weighted evasions</span></div>
+</div>
+</section>
+
+<div class="two">
+<section>
+<h2>TOO GOOD TO TRUST</h2>
+<p><b>No leakage.</b> Train and test are split by domain, so the model never sees a site from a domain it was trained on. Shuffled-label runs land at AUC ≈ 0.5, which means the pipeline isn't quietly memorizing anything.</p>
+<p><b>Robust, but not free.</b> Across 15 retrains I kept removing the strongest features. Recall barely moved (99.45% with the top 14 gone), but false positives rose from 0 to 13 per 10,000.</p>
+<p><b>A hidden single point of failure.</b> SHAP showed 78% of the model's reliance sat on one URL-similarity feature. Near-perfect accuracy was hiding how narrow the model really was.</p>
+</section>
+<section>
+<h2>THINKING LIKE AN ATTACKER</h2>
+<p><b>How much effort to evade?</b> I built a cost-weighted greedy counterfactual search that changes the cheapest features first, then ran 600 simulated attacks against each detector.</p>
+<p><b>The domain is the lock.</b> 596 of 600 successful evasions needed a spoofed domain, so the expensive thing for attackers is exactly the thing worth defending.</p>
+<p><b>Who's attacking?</b> K-means split 92,300 phishing sites into 4 attack profiles; 87% were near-empty bait pages. I turned these findings into concrete security recommendations.</p>
+</section>
+</div>
+
+<section class="block">
+<h2>THE FIX: A TWO-LAYER ENSEMBLE</h2>
+<p class="proj-lede">One model uses every feature. The second is trained only on features that are hard to spoof. When an attacker clones a real page, the content looks legitimate, but the hard-to-fake signals still give it away.</p>
+<figure class="chart" style="margin: 0">
+<figcaption class="cap">missed phishing sites per 10,000 under an AI-style page-cloning attack (lower is better)</figcaption>
+<div class="row"><div class="k">full model</div><div class="track" style="--w: 80%"><div class="bar" style="background: var(--line)"></div><div class="v">32</div></div></div>
+<div class="row"><div class="k">ensemble</div><div class="track" style="--w: 12.5%"><div class="bar" style="background: var(--pink)"></div><div class="v" style="color: var(--pink); font-weight: 700">5</div></div></div>
+<div class="cap">same false-positive rate for both: the second layer added zero false alarms</div>
+</figure>
+</section>
+
+<nav class="pager" aria-label="More projects">
+<a href="socrates-duck.html">← socrates' duck</a>
+<a href="audio-compression.html">next: audio transformer compression →</a>
+</nav>
+
+</main>
+</body>
+</html>
